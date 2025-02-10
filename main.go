@@ -9,7 +9,9 @@ func main() {
 	// message
 	message := gomail.NewMessage()
 
+	//                          This should be an env variable
 	message.SetHeader("From", "mesapidemo@gmail.com")
+	//                      This would be inputted by user
 	message.SetHeader("To", "poylolt@gmail.com")
 	message.SetHeader("Subject", "[From: Name goes here ] This message was sent through a Raspberry Pi*")
 
