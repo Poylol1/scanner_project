@@ -2,17 +2,25 @@ package main
 
 import (
 	"fmt"
+	"os"
+	//"os/exec"
 	"github.com/otiai10/gosseract/v2"
 	gomail "gopkg.in/mail.v2"
-	"os"
 )
 
+var GMAILKEY = os.Getenv("GMAILKEY")
+var GPTKEY = os.Getenv("GPTKEY")
+
 func main() {
-	recieved, er := getTextFromImage("./tests/testImage.png")
+	recieved, er := getTextFromImage("./tests/UserTests.jpg")
 	if er != nil {
 		fmt.Println(er)
 	}
-	sendMail("Pollo", "poylolt@gmail.com", recieved, "This message was read from an image of a document with OCR!!")
+	fmt.Println(recieved)
+}
+func getResponse(scanned string) (output string, er error) {
+
+	return "TEMP", nil
 }
 func getTextFromImage(imagePath string) (text string, er error) {
 	client := gosseract.NewClient()
@@ -35,8 +43,7 @@ func sendMail(From string, To string, Subject string, msg string) {
 
 	// I should understand what does this line does I hope it is not much problem
 	//                                               This password should be an environment variable
-	password := os.Getenv("GMAILKEY")
-	dialer := gomail.NewDialer("smtp.gmail.com", 587, "mesapidemo@gmail.com", password)
+	dialer := gomail.NewDialer("smtp.gmail.com", 587, "mesapidemo@gmail.com", GMAILKEY)
 
 	if err := dialer.DialAndSend(message); err != nil {
 		fmt.Println("Error:", err)
