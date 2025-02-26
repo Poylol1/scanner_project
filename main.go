@@ -2,7 +2,9 @@ package main
 
 import (
 	"fmt"
+	"net/http"
 	"os"
+
 	//"os/exec"
 	"github.com/otiai10/gosseract/v2"
 	gomail "gopkg.in/mail.v2"
@@ -12,14 +14,17 @@ var GMAILKEY = os.Getenv("GMAILKEY")
 var GPTKEY = os.Getenv("GPTKEY")
 
 func main() {
-	recieved, er := getTextFromImage("./tests/UserTests.jpg")
+	recieved, er := getTextFromImage("./tests/extendedTest.jpg")
 	if er != nil {
 		fmt.Println(er)
 	}
 	fmt.Println(recieved)
 }
-func getResponse(scanned string) (output string, er error) {
 
+func messageToGPT(scanned string) (output string, er error) {
+	req, er = http.NewRequest("POST", "https://api.openai.com/v1/chat/completions", map[string]inteface{}{"model": "gpt-4o-mini", "Authorization": ""})
+	// httpClient := http.Client{:
+	// req, _ = := htthttpClient.
 	return "TEMP", nil
 }
 func getTextFromImage(imagePath string) (text string, er error) {
