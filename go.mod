@@ -13,6 +13,8 @@ require (
 	gopkg.in/alexcesaro/quotedprintable.v3 v3.0.0-20150716171945-2caba252f4dc // indirect
 	// MAIL DEPENDENCY TO SEND EMAILS
 	gopkg.in/mail.v2 v2.3.1 // indirect
+
+	// OTHER
 	periph.io/x/cmd v0.0.0-20250109192305-4305ecf126e5 // indirect
 	periph.io/x/conn/v3 v3.7.1 // indirect
 	periph.io/x/d2xx v0.1.1 // indirect
